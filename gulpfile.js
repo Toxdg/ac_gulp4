@@ -9,6 +9,7 @@ var sass = require('gulp-sass')(require('sass'));
 // js
 var concat = require('gulp-concat');
 var minify = require('gulp-minify');
+var uglify = require('gulp-uglify');
 // FTP
 var gutil = require( 'gulp-util' );  
 var ftp = require( 'vinyl-ftp' );
@@ -80,6 +81,7 @@ gulp.task('js-minify', function(done) {
         exclude: ['tasks'],
         ignoreFiles: ['.combo.js', '-min.js']
     }))
+	.pipe(uglify())
     .pipe(gulp.dest(mainSettings.baseDir+'js/'));
     done();
 });
